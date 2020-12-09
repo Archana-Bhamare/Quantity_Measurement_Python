@@ -29,3 +29,10 @@ def test_givenOneFeetAndFloatValue_WhenCompared_ShouldReturnTrue():
     second_feet = float(0.0)
     with pytest.raises(AssertionError):
         assert first_feet == second_feet
+
+
+# Test_case5 : Comparing two different feet value
+def test_givenTwoDifferentFeetValue_WhenCompared_ShouldReturnFalse():
+    first_feet = Feet(0.0)
+    second_feet = Feet(1.0)
+    assert first_feet != second_feet
