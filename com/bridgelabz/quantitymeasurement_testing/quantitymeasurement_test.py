@@ -11,4 +11,8 @@ def test_givenOneFeetAndOneYardValue_WhenCompared_ShouldReturnTrue():
     assert first_feet == second_yard
 
 
-
+# Test_case2 : For compare 1ft != 1yd
+def test_givenOneFeetAndOneYardValue_WhenCompared_ShouldReturnFalse():
+    first_feet = Feet(1.0)
+    second_yard = Yard(1.0)
+    assert first_feet != second_yard
