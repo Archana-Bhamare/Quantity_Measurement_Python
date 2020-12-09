@@ -82,3 +82,8 @@ def test_givenTwoInchValueInstanceVariable_WhenCompared_ShouldReturnTrue():
     first_inch = Inch(0.0)
     second_inch = first_inch
     assert first_inch == second_inch
+
+
+def test_givenOneInchValue_WhenComparedIfNotNone_ShouldReturnTrue():
+    first_inch = Inch(0.0)
+    assert first_inch is not None
