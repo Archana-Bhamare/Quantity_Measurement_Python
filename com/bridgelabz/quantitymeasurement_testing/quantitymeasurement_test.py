@@ -94,3 +94,9 @@ def test_givenOneInchAndFloatValue_WhenCompared_ShouldReturnTrue():
     second_inch = float(0.0)
     with pytest.raises(AssertionError):
         assert first_inch == second_inch
+
+
+def test_givenTwoDifferentInchValue_WhenCompared_ShouldReturnFalse():
+    first_inch = Inch(0.0)
+    second_inch = Inch(1.0)
+    assert first_inch != second_inch
