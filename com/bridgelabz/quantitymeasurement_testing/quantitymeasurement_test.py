@@ -1,5 +1,6 @@
 from com.bridgelabz.quantitymeasurement.Feet import Feet
 from com.bridgelabz.quantitymeasurement.Yard import Yard
+from com.bridgelabz.quantitymeasurement.Inch import Inch
 import pytest
 
 
@@ -68,3 +69,10 @@ def test_givenTwoDifferentYardValue_WhenCompared_ShouldReturnFalse():
     first_yard = Yard(0.0)
     second_yard = Yard(1.0)
     assert first_yard != second_yard
+
+
+# Test_case for Inch
+def test_givenTwoInchValue_WhenCompared_ShouldReturnTrue():
+    first_inch = Inch(0.0)
+    second_inch = Inch(0.0)
+    assert first_inch == second_inch
