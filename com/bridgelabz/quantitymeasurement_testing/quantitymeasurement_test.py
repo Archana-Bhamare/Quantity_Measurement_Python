@@ -4,7 +4,7 @@ import pytest
 
 
 # Test_case for Feet
-# Test_case1 : comparing two feel value
+# Test_case1 : comparing two feet value
 def test_givenTwoFeetValue_WhenCompared_ShouldReturnTrue():
     first_feet = Feet(0.0)
     second_feet = Feet(0.0)
@@ -24,7 +24,7 @@ def test_givenOneFeetValue_WhenComparedIfNotNone_ShouldReturnTrue():
     assert first_feet is not None
 
 
-# Test_case4 : Compared one feel value with float value
+# Test_case4 : Compared one feet value with float value
 def test_givenOneFeetAndFloatValue_WhenCompared_ShouldReturnTrue():
     first_feet = Feet(0.0)
     second_feet = float(0.0)
@@ -51,6 +51,14 @@ def test_givenTwoYardValueInstanceVariable_WhenCompared_ShouldReturnTrue():
     second_yard = first_yard
     assert first_yard == second_yard
 
+
 def test_givenOneYardValue_WhenComparedIfNotNone_ShouldReturnTrue():
     first_yard = Yard(0.0)
     assert first_yard is not None
+
+
+def test_givenOneYardAndFloatValue_WhenCompared_ShouldReturnTrue():
+    first_yard = Yard(0.0)
+    second_yard = float(0.0)
+    with pytest.raises(AssertionError):
+        assert first_yard == second_yard
