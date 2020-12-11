@@ -4,7 +4,7 @@ import pytest
 
 # Test_case for Feet
 # Test_case1 : comparing two feet value
-def test_givenZeroFtandZeroFt_WhenCompared_ShouldReturnTrue():
+def test_givenZeroFtAndZeroFt_WhenCompared_ShouldReturnTrue():
     first_feet = QuantityMeasurement(Length.FEET, 0.0)
     second_feet = QuantityMeasurement(Length.FEET, 0.0)
     assert first_feet == second_feet
@@ -32,20 +32,20 @@ def test_givenZeroFeetAndFloatValue_WhenCompared_ShouldReturnTrue():
 
 
 # Test_case5 : Comparing two different feet value
-def test_givenZeroFeetandOneFeet_WhenCompared_ShouldReturnFalse():
+def test_givenZeroFeetAndOneFeet_WhenCompared_ShouldReturnFalse():
     first_feet = QuantityMeasurement(Length.FEET, 0.0)
     second_feet = QuantityMeasurement(Length.FEET, 1.0)
     assert first_feet != second_feet
 
 
 # Test_case for Yard
-def test_givenZeroYardandZeroYard_WhenCompared_ShouldReturnTrue():
+def test_givenZeroYardAndZeroYard_WhenCompared_ShouldReturnTrue():
     first_yard = QuantityMeasurement(Length.YARD, 0.0)
     second_yard = QuantityMeasurement(Length.YARD, 0.0)
     assert first_yard == second_yard
 
 
-def test_givenZeroYardValueandInstanceVariable_WhenCompared_ShouldReturnTrue():
+def test_givenZeroYardValueAndInstanceVariable_WhenCompared_ShouldReturnTrue():
     first_yard = QuantityMeasurement(Length.YARD, 0.0)
     second_yard = first_yard
     assert first_yard == second_yard
@@ -63,7 +63,7 @@ def test_givenZeroYardAndFloatValue_WhenCompared_ShouldReturnTrue():
         assert first_yard == second_yard
 
 
-def test_givenZeroYardandOneYard_WhenCompared_ShouldReturnFalse():
+def test_givenZeroYardAndOneYard_WhenCompared_ShouldReturnFalse():
     first_yard = QuantityMeasurement(Length.YARD, 0.0)
     second_yard = QuantityMeasurement(Length.YARD, 1.0)
     assert first_yard != second_yard
@@ -94,7 +94,7 @@ def test_givenZeroInchAndFloatValue_WhenCompared_ShouldReturnTrue():
         assert first_inch == second_inch
 
 
-def test_givenZeroInchandOneInch_WhenCompared_ShouldReturnFalse():
+def test_givenZeroInchAndOneInch_WhenCompared_ShouldReturnFalse():
     first_inch = QuantityMeasurement(Length.INCH, 0.0)
     second_inch = QuantityMeasurement(Length.INCH, 1.0)
     assert first_inch != second_inch
@@ -107,17 +107,12 @@ def test_givenZeroInchandOneInch_WhenCompared_ShouldReturnFalse():
                              (QuantityMeasurement(Length.INCH, 1.0), QuantityMeasurement(Length.YARD, 1.0), False),
                              (QuantityMeasurement(Length.INCH, 36.0), QuantityMeasurement(Length.YARD, 1.0), True),
                              (QuantityMeasurement(Length.YARD, 1.0), QuantityMeasurement(Length.FEET, 3.0), True),
-                             (QuantityMeasurement(Length.YARD, 1.0), QuantityMeasurement(Length.INCH, 36.0), True)
+                             (QuantityMeasurement(Length.YARD, 1.0), QuantityMeasurement(Length.INCH, 36.0), True),
+                             (QuantityMeasurement(Length.INCH, 2.0), QuantityMeasurement(Length.CM, 5.0), True)
+
                          ])
-def test_givenTwoLengthsUnitValue_WhenCompared_ShoudReturnExpected(first_length, second_length, expected):
+def test_givenTwoLengthsUnitValue_WhenCompared_ShouldReturnExpected(first_length, second_length, expected):
     assert QuantityMeasurement.compareto(first_length, second_length) == expected
-
-
-def test_given_OneInchandOneCM_WhenCompared_ShouldReturnTrue():
-    first_inch = QuantityMeasurement(Length.INCH, 2.0)
-    second_cm = QuantityMeasurement(Length.CM, 2.5)
-    with pytest.raises(AssertionError):
-        assert first_inch.compareto(second_cm)
 
 
 @pytest.mark.parametrize("first_length, second_length,expected",
@@ -126,7 +121,6 @@ def test_given_OneInchandOneCM_WhenCompared_ShouldReturnTrue():
                              (QuantityMeasurement(Length.FEET, 1.0), QuantityMeasurement(Length.INCH, 2.0), 14.0),
                              (QuantityMeasurement(Length.FEET, 1.0), QuantityMeasurement(Length.FEET, 1.0), 24.0),
                              (QuantityMeasurement(Length.INCH, 2.0), QuantityMeasurement(Length.CM, 2.5), 3.0),
-
                          ])
 def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_length, second_length, expected):
     assert QuantityMeasurement.addition(first_length, second_length) == expected
