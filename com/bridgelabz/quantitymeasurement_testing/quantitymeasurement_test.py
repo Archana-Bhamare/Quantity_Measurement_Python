@@ -133,7 +133,9 @@ def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_lengt
 @pytest.mark.parametrize("first_value, second_value, expected",
                          [
                              (QuantityMeasurement(Length.GALLON, 1.0), QuantityMeasurement(Length.LITRE, 3.78), True),
-                             (QuantityMeasurement(Length.LITRE, 1.0), QuantityMeasurement(Length.ML, 1000.0), True)
+                             (QuantityMeasurement(Length.LITRE, 1.0), QuantityMeasurement(Length.ML, 1000.0), True),
+                             (QuantityMeasurement(Length.LITRE, 1.0), QuantityMeasurement(Length.ML, 500.0), False),
+                             (QuantityMeasurement(Length.GALLON, 1.0), QuantityMeasurement(Length.ML, 1000.0), False),
                          ])
 def test_function(first_value, second_value, expected):
     assert QuantityMeasurement.compareto(first_value, second_value) == expected
