@@ -2,6 +2,7 @@ from com.bridgelabz.quantitymeasurement.QuantityMeasurement import *
 import pytest
 
 
+# UC-1
 # Test_case for Feet
 # Test_case1 : comparing two feet value
 def test_givenZeroFtAndZeroFt_WhenCompared_ShouldReturnTrue():
@@ -100,6 +101,7 @@ def test_givenZeroInchAndOneInch_WhenCompared_ShouldReturnFalse():
     assert first_inch != second_inch
 
 
+# UC-3
 @pytest.mark.parametrize("first_length, second_length,expected",
                          [
                              (QuantityMeasurement(Length.FEET, 3.0), QuantityMeasurement(Length.YARD, 1.0), True),
@@ -115,6 +117,7 @@ def test_givenTwoLengthsUnitValue_WhenCompared_ShouldReturnExpected(first_length
     assert QuantityMeasurement.compareto(first_length, second_length) == expected
 
 
+# UC-4
 @pytest.mark.parametrize("first_length, second_length,expected",
                          [
                              (QuantityMeasurement(Length.INCH, 2.0), QuantityMeasurement(Length.INCH, 2.0), 4.0),
@@ -124,3 +127,12 @@ def test_givenTwoLengthsUnitValue_WhenCompared_ShouldReturnExpected(first_length
                          ])
 def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_length, second_length, expected):
     assert QuantityMeasurement.addition(first_length, second_length) == expected
+
+
+# UC-5
+@pytest.mark.parametrize("first_value, second_value, expected",
+                         [
+                             (QuantityMeasurement(Length.GALLON, 1.0), QuantityMeasurement(Length.LITRE, 3.78), True),
+                         ])
+def test_function(first_value, second_value, expected):
+    assert QuantityMeasurement.compareto(first_value, second_value) == expected
