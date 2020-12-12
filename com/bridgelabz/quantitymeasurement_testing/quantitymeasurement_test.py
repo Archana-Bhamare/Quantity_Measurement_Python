@@ -130,31 +130,40 @@ def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_lengt
 
 
 # UC-5
-@pytest.mark.parametrize("first_value, second_value, expected",
+@pytest.mark.parametrize("first_volume, second_volume, expected",
                          [
                              (QuantityMeasurement(Unit.GALLON, 1.0), QuantityMeasurement(Unit.LITRE, 3.78), True),
                              (QuantityMeasurement(Unit.LITRE, 1.0), QuantityMeasurement(Unit.ML, 1000.0), True),
                              (QuantityMeasurement(Unit.LITRE, 1.0), QuantityMeasurement(Unit.ML, 500.0), False),
                              (QuantityMeasurement(Unit.GALLON, 1.0), QuantityMeasurement(Unit.ML, 1000.0), False),
                          ])
-def test_givenTwoVolumeUnitValue_WhenCompared_ShouldReturnExpected(first_value, second_value, expected):
-    assert QuantityMeasurement.compareto(first_value, second_value) == expected
+def test_givenTwoVolumeUnitValue_WhenCompared_ShouldReturnExpected(first_volume, second_volume, expected):
+    assert QuantityMeasurement.compareto(first_volume, second_volume) == expected
 
 
 # UC6
-@pytest.mark.parametrize("first_length, second_length,expected",
+@pytest.mark.parametrize("first_volume, second_volume,expected",
                          [
                              (QuantityMeasurement(Unit.GALLON, 1.0), QuantityMeasurement(Unit.LITRE, 3.78), 7.56),
                              (QuantityMeasurement(Unit.LITRE, 1.0), QuantityMeasurement(Unit.ML, 1000), 2.0),
                          ])
-def test_givenTwoVolumeUnitValue_WhenAdd_ShouldReturnExpectedResult1(first_length, second_length, expected):
-    assert QuantityMeasurement.addition(first_length, second_length) == expected
+def test_givenTwoVolumeUnitValue_WhenAdd_ShouldReturnExpectedResult1(first_volume, second_volume, expected):
+    assert QuantityMeasurement.addition(first_volume, second_volume) == expected
 
 
-@pytest.mark.parametrize("first_value, second_value, expected",
+# UC7
+@pytest.mark.parametrize("first_weight, second_weight, expected",
                          [
                              (QuantityMeasurement(Unit.KG, 1.0), QuantityMeasurement(Unit.GRAMS, 1000), True),
                              (QuantityMeasurement(Unit.TONNE, 1.0), QuantityMeasurement(Unit.KG, 1000.0), True)
                          ])
-def test_givenTwoWeightValue_WhenCompared_ShouldReturnExpected(first_value, second_value, expected):
-    assert QuantityMeasurement.compareto(first_value, second_value) == expected
+def test_givenTwoWeightValue_WhenCompared_ShouldReturnExpected(first_weight, second_weight, expected):
+    assert QuantityMeasurement.compareto(first_weight, second_weight) == expected
+
+
+@pytest.mark.parametrize("first_weight, second_weight,expected",
+                         [
+                             (QuantityMeasurement(Unit.TONNE, 1.0), QuantityMeasurement(Unit.GRAMS, 1000), 1001)
+                         ])
+def test_givenTwoWeightValue_WhenAdd_ShouldReturnExpectedResult1(first_weight, second_weight, expected):
+    assert QuantityMeasurement.addition(first_weight, second_weight) == expected
