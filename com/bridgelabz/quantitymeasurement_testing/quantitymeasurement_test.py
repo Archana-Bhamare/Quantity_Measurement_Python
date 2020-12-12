@@ -137,7 +137,7 @@ def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_lengt
                              (QuantityMeasurement(Unit.LITRE, 1.0), QuantityMeasurement(Unit.ML, 500.0), False),
                              (QuantityMeasurement(Unit.GALLON, 1.0), QuantityMeasurement(Unit.ML, 1000.0), False),
                          ])
-def test_function(first_value, second_value, expected):
+def test_givenTwoVolumes_WhenComapared_ShouldReturnExpected(first_value, second_value, expected):
     assert QuantityMeasurement.compareto(first_value, second_value) == expected
 
 
