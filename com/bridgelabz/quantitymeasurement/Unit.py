@@ -12,9 +12,28 @@ class Unit(enum.Enum):
     KG = 1.0
     GRAMS = 0.001
     TONNE = 1000
+    FAHRENHEIT = 212
+    CELSIUS = 100
 
     def __init__(self, unit):
         self.unit = unit
 
     def convert(self, length):
+        """
+
+        :param length: value of unit
+        :return: convert the length
+        """
         return self.unit * length
+
+    def converttemp(self, temp):
+        """
+
+        :param temp: Fahrehein and Celsius
+        :return: convert the temperature
+        """
+        if temp == Unit.CELSIUS:
+            return (temp * 9 / 5) + 32
+        elif temp == Unit.FAHRENHEIT:
+            return temp * self.unit / 212
+        return False
