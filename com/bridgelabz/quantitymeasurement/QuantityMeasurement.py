@@ -1,4 +1,4 @@
-from com.bridgelabz.quantitymeasurement.Unit import *
+from com.bridgelabz.quantitymeasurement.Unit import Unit
 
 
 class QuantityMeasurement:
@@ -11,10 +11,9 @@ class QuantityMeasurement:
             return self.unit == other.unit and other.length == self.length
 
     def compareto(self, other):
-        if isinstance(self.unit, Length) and isinstance(other.unit, Length):
-            return Length.convert(self.unit, self.length) == Length.convert(other.unit, other.length)
+        if isinstance(self.unit, Unit) and isinstance(other.unit, Unit):
+            return Unit.convert(self.unit, self.length) == Unit.convert(other.unit, other.length)
         return False
 
     def addition(self, other):
-        return Length.convert(self.unit, self.length) + Length.convert(other.unit, other.length)
-
+        return Unit.convert(self.unit, self.length) + Unit.convert(other.unit, other.length)
