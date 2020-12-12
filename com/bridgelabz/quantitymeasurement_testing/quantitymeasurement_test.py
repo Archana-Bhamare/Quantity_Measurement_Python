@@ -101,7 +101,7 @@ def test_givenZeroInchAndOneInch_WhenCompared_ShouldReturnFalse():
     assert first_inch != second_inch
 
 
-# UC-3
+# UC2-3 : Compare Lengths
 @pytest.mark.parametrize("first_length, second_length,expected",
                          [
                              (QuantityMeasurement(Unit.FEET, 3.0), QuantityMeasurement(Unit.YARD, 1.0), True),
@@ -117,7 +117,7 @@ def test_givenTwoLengthsUnitValue_WhenCompared_ShouldReturnExpected(first_length
     assert QuantityMeasurement.compareto(first_length, second_length) == expected
 
 
-# UC-4
+# UC-4- Add Two lengths in inches
 @pytest.mark.parametrize("first_length, second_length,expected",
                          [
                              (QuantityMeasurement(Unit.INCH, 2.0), QuantityMeasurement(Unit.INCH, 2.0), 4.0),
@@ -129,7 +129,7 @@ def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_lengt
     assert QuantityMeasurement.addition(first_length, second_length) == expected
 
 
-# UC-5
+# UC-5-Compare Volumes in Litre and Gallon
 @pytest.mark.parametrize("first_volume, second_volume, expected",
                          [
                              (QuantityMeasurement(Unit.GALLON, 1.0), QuantityMeasurement(Unit.LITRE, 3.78), True),
@@ -141,7 +141,7 @@ def test_givenTwoVolumeUnitValue_WhenCompared_ShouldReturnExpected(first_volume,
     assert QuantityMeasurement.compareto(first_volume, second_volume) == expected
 
 
-# UC6
+# UC6-Add Volumes in Litres
 @pytest.mark.parametrize("first_volume, second_volume,expected",
                          [
                              (QuantityMeasurement(Unit.GALLON, 1.0), QuantityMeasurement(Unit.LITRE, 3.78), 7.56),
@@ -151,7 +151,7 @@ def test_givenTwoVolumeUnitValue_WhenAdd_ShouldReturnExpectedResult1(first_volum
     assert QuantityMeasurement.addition(first_volume, second_volume) == expected
 
 
-# UC7
+# UC7-Compare and Add Weights in Gram
 @pytest.mark.parametrize("first_weight, second_weight, expected",
                          [
                              (QuantityMeasurement(Unit.KG, 1.0), QuantityMeasurement(Unit.GRAMS, 1000), True),
@@ -161,9 +161,20 @@ def test_givenTwoWeightValue_WhenCompared_ShouldReturnExpected(first_weight, sec
     assert QuantityMeasurement.compareto(first_weight, second_weight) == expected
 
 
+# Addition of Weight in Grams
 @pytest.mark.parametrize("first_weight, second_weight,expected",
                          [
                              (QuantityMeasurement(Unit.TONNE, 1.0), QuantityMeasurement(Unit.GRAMS, 1000), 1001)
                          ])
 def test_givenTwoWeightValue_WhenAdd_ShouldReturnExpectedResult1(first_weight, second_weight, expected):
     assert QuantityMeasurement.addition(first_weight, second_weight) == expected
+
+
+# UC8-Equate Fahrenheit and Celsius
+@pytest.mark.parametrize("first_temp, second_temp, expected",
+                         [
+                             (QuantityMeasurement(Unit.FAHRENHEIT, 212), QuantityMeasurement(Unit.CELSIUS, 100), True),
+                             (QuantityMeasurement(Unit.CELSIUS, 100), QuantityMeasurement(Unit.FAHRENHEIT, 212), True)
+                         ])
+def test_GivenOneFahAndOneCelsius_WhenCompare_ShouldReturnTrue(first_temp, second_temp, expected):
+    assert QuantityMeasurement.compare(first_temp, second_temp) == expected
