@@ -30,10 +30,5 @@ class QuantityMeasurement:
             return Unit.converttemp(self.unit, self.value) == Unit.converttemp(other.unit, other.value)
         return False
 
-    def addition(self, other):
-        """
-
-        Add two unit lengths
-        :return: Addition of unit
-        """
+    def __add__(self, other):
         return Unit.convert(self.unit, self.value) + Unit.convert(other.unit, other.value)
