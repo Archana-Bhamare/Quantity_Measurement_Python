@@ -126,7 +126,7 @@ def test_givenTwoLengthsUnitValue_WhenCompared_ShouldReturnExpected(first_length
                              (QuantityMeasurement(Unit.INCH, 2.0), QuantityMeasurement(Unit.CM, 2.5), 3.0),
                          ])
 def test_givenTwoLengthsUnitValue_WhenAdd_ShouldReturnExpectedResult(first_length, second_length, expected):
-    assert QuantityMeasurement.addition(first_length, second_length) == expected
+    assert first_length + second_length == expected
 
 
 # UC-5-Compare Volumes in Litre and Gallon
@@ -148,7 +148,7 @@ def test_givenTwoVolumeUnitValue_WhenCompared_ShouldReturnExpected(first_volume,
                              (QuantityMeasurement(Unit.LITRE, 1.0), QuantityMeasurement(Unit.ML, 1000), 2.0),
                          ])
 def test_givenTwoVolumeUnitValue_WhenAdd_ShouldReturnExpectedResult1(first_volume, second_volume, expected):
-    assert QuantityMeasurement.addition(first_volume, second_volume) == expected
+    assert first_volume + second_volume == expected
 
 
 # UC7-Compare and Add Weights in Gram
@@ -167,7 +167,7 @@ def test_givenTwoWeightValue_WhenCompared_ShouldReturnExpected(first_weight, sec
                              (QuantityMeasurement(Unit.TONNE, 1.0), QuantityMeasurement(Unit.GRAMS, 1000), 1001)
                          ])
 def test_givenTwoWeightValue_WhenAdd_ShouldReturnExpectedResult1(first_weight, second_weight, expected):
-    assert QuantityMeasurement.addition(first_weight, second_weight) == expected
+    assert first_weight + second_weight == expected
 
 
 # UC8-Equate Fahrenheit and Celsius
